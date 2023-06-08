@@ -91,7 +91,7 @@ private func makeField(from variable: VariableDeclSyntax) -> String {
     if wrapper == "ID" {
         return ".id()"
     }
-    return ".field("\(variable.name)", .\(variable.type.lowercased()))"
+    return ".field(\"\(variable.name)\", .\(variable.type.lowercased()))"
 }
 
 @main
