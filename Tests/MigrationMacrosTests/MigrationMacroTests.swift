@@ -17,6 +17,9 @@ final class MigrationMacroTests: XCTestCase {
                 
                 @ID(key: .id)
                 var id: UUID?
+            
+                @Field(key: "name")
+                var name: String
             }
             """,
             expandedSource: """

@@ -28,7 +28,7 @@ extension CreateMigrationMacro: MemberMacro {
         of node: AttributeSyntax,
         providingMembersOf declaration: some DeclGroupSyntax,
         in context: some MacroExpansionContext
-    ) throws -> [SwiftSyntax.DeclSyntax] {
+    ) throws -> [DeclSyntax] {
         
         // Check for the declaration being a class
         guard let classDeclaration = declaration.as(ClassDeclSyntax.self) else {
@@ -64,7 +64,7 @@ extension CreateMigrationMacro: MemberMacro {
                 for variable in variables {
                     ExprSyntax(
                         """
-                        .field("\(raw: variable.name)")
+                        \(raw: makeField(from: variable))
                         """
                     )
                 }
@@ -84,6 +84,14 @@ private func retrieveSchemaName(from variables: [VariableDeclSyntax]) -> String?
     let schemaVariable = variables.first(where: { $0.name.contains("schema") })
 
     return schemaVariable?.value
+}
+
+private func makeField(from variable: VariableDeclSyntax) -> String {
+    let wrapper = variable.wrapper
+    if wrapper == "ID" {
+        return ".id()"
+    }
+    return ".field("\(variable.name)", .\(variable.type.lowercased()))"
 }
 
 @main
