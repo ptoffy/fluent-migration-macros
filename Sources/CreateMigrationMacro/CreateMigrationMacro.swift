@@ -34,7 +34,7 @@ extension CreateMigrationMacro: MemberMacro {
         guard let classDeclaration = declaration.as(ClassDeclSyntax.self) else {
             throw MigrationMacroError.onlyApplicableToClass
         }
-                        
+        
         // Check for the class to be a `Model`
         guard classDeclaration.inheritanceClause?.inheritedTypeCollection.contains(where: {
             $0.typeName.description.contains("Model") // Heh `$0.typeName.description` prints `Model `...

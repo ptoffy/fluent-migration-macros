@@ -8,6 +8,8 @@ final class SomeModel: Model {
     @ID(key: .id)
     var id: UUID?
 
+    @Constrained(.required)
     @Field(key: "name")
     var name: String
 }
+
