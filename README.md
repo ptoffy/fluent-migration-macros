@@ -1,7 +1,8 @@
 # fluent-migration-macros
 This package provides a `@Migratable` macro which removes the need to manually write migrations when using Vapor's [Fluent-Kit](https://github.com/vapor/fluent-kit).
 
-> **Warning**: This library is just a proof of concept, do not use it in production yet!
+> [!WARNING]\
+> This library is just a proof of concept, do not use it in production yet!
 
 ## Usage
 You can just simply add `@Migratable` to your model and the migrations are going to be created automagically.
