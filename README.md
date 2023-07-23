@@ -34,3 +34,7 @@ struct Create: AsyncMigration {
     }
 }
 ```
+
+TODOs:
+- [ ] Required, unique etc...
+- [ ] What if the model is changed after the migration is run?
